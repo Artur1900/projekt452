@@ -24,10 +24,22 @@ function App() {
       searchRecipes()
     }, []);
 
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      searchRecipes();
+    }
 
   return (
     <div className="container">
         <h2>Takie do szukania jedzenia</h2>
+
+        <SearchBar
+        isLoading={isLoading}
+        query={query}
+        setQuery={setQuery}
+        handleSubmit={handleSubmit}
+      />
+
         <div className="recipes">
           {recipes 
             ? recipes.map(recipe => (
